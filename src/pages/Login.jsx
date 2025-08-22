@@ -34,7 +34,7 @@ const Login = () => {
       if (mydata.success) {
         login(mydata.token, mydata.user);
         toast.success("Login Successful");
-        redirect("/home");
+        redirect("/");
       } else {
         toast.error(mydata.token || "Login Failed");
         setErrorMessage(mydata.message || "Login Failed");
