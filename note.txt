@@ -1,0 +1,126 @@
+npm install vite @latest
+installed tailwind
+installed react router dom
+
+npm react spinners for lazy load for every page
+
+
+
+
+
+
+import House1 from "../../src/assets/House1.png";
+import House2 from "../../src/assets/House2.png";
+import House3 from "../../src/assets/House3.png";
+import House4 from "../../src/assets/House4.png";
+import House5 from "../../src/assets/House5.png";
+import House6 from "../../src/assets/House6.png";
+import House7 from "../../src/assets/House7.png";
+import House8 from "../../src/assets/House8.png";
+import House9 from "../../src/assets/House9.png";
+
+
+
+
+export const allProperties = [
+  {
+    salesTag: "For Sale",
+    featuredTag: "Featured",
+    title: "Real House Luxury Villa",
+    location: "Victoria Island, Lagos",
+    bedrooms: "6 Bedrooms",
+    bathrooms: "3 Bathrooms",
+    house: {House1},
+    price: "3,340,000,000",
+  },
+
+  {
+    salesTag: "For Rent",
+    featuredTag: "Featured",
+    title: "Exquisite Haven Villa",
+    location: "Festac, Lagos",
+    bedrooms: "5 Bedrooms",
+    bathrooms: "3 Bathrooms",
+    house: {House2},
+    price: "4,000,000,000",
+  },
+
+  {
+    salesTag: "For Sale",
+    featuredTag: "Featured",
+    title: "Luxe Palatial Villa",
+    location: "Gbagada, Lagos",
+    bedrooms: "7 Bedrooms",
+    bathrooms: "3 Bathrooms",
+    house: House3,
+    price: "5,300,000,000",
+  },
+
+  {
+    salesTag: "For Rent",
+    featuredTag: "Featured",
+    title: "Harmony Luxury Villa",
+    location: "Mushin, Lagos",
+    bedrooms: "4 Bedrooms",
+    bathrooms: "3 Bathrooms",
+    house: House4,
+    price: "4,000,000,000",
+  },
+
+  {
+    salesTag: "For Sale",
+    featuredTag: "Featured",
+    title: "Real House Luxury Villa",
+    location: "Victoria Island, Lagos",
+    bedrooms: "6 Bedrooms",
+    bathrooms: "4 Bathrooms",
+    house: House5,
+    price: "350,000,000",
+  },
+
+  {
+    salesTag: "For Rent",
+    featuredTag: "Featured",
+    title: "Real House Luxury Villa",
+    location: "Lekki-Ajah, Lagos",
+    bedrooms: "5 Bedrooms",
+    bathrooms: "3 Bathrooms",
+    house: House6,
+    price: "4,200,000,000",
+  },
+
+  {
+    salesTag: "For Sale",
+    featuredTag: "Featured",
+    title: "Infinite Bliss Villa",
+    location: "Ishiagu, Enugu",
+    bedrooms: "5 Bedrooms",
+    bathrooms: "3 Bathrooms",
+    house: House7,
+    price: "2,350,000,000",
+  },
+
+  {
+    salesTag: "For Rent",
+    featuredTag: "Featured",
+    title: "Real House Luxury Villa",
+    location: "Works Layout, Owerri",
+    bedrooms: "5 Bedrooms",
+    bathrooms: "3 Bathrooms",
+    house: House8,
+    price: "3,350,000,000",
+  },
+
+  {
+    salesTag: "For Sale",
+    featuredTag: "Featured",
+    title: "Real House Luxury Villa",
+    location: "Ikeja, Lagos",
+    bedrooms: "6 Bedrooms",
+    bathrooms: "6 Bathrooms",
+    house: House9,
+    price: "600,000,000",
+  },
+];
+
+
