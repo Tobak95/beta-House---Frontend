@@ -13,7 +13,7 @@ import Naira from "../../src/assets/Naira.png";
 import Share from "../../src/assets/Share.png";
 import VideoImage from "../../src/assets/VideoImage.png";
 import { useState } from "react";
-import Pagination from "./pagination";
+import Pagination from "./Pagination";
 
 const AvailableProperties = () => {
   const [currentPage, setCurrentPage] = useState(1);
