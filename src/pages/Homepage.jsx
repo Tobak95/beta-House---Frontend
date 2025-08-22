@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "../component/hero";
+import Hero from "../component/Hero.jsx";
 import Footer from "../component/layout/footer";
 import AvailableProperties from "../component/AvailableProperties";
 import DiscoverProperties from "../component/DiscoverProperties";
