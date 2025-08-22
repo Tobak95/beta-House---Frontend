@@ -12,17 +12,29 @@ import LocationImg from "../../src/assets/LocationImg.png";
 import Naira from "../../src/assets/Naira.png";
 import Share from "../../src/assets/Share.png";
 import VideoImage from "../../src/assets/VideoImage.png";
+import { useState } from "react";
+import Pagination from "./pagination";
 
 const AvailableProperties = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  // const [loading, setIsloading] = useState(false);
+  // const [properties, setProperties] = useState([]);
+  const itemsPerPage = 9;
+
+  // calculate what to show
+  const totalItems = allProperties.length;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = allProperties.slice(indexOfFirstItem, indexOfLastItem);
   return (
     <div className="layout">
       <div className="flex flex-col justify-center items-center  gap-2 p-3 lg:flex-row lg:justify-between  lg:mt-5 font-[outfit]">
-        <div className="flex gap-3 jlg:justify-center items-center">
+        <div className="flex gap-3 justify-between items-center">
           <div>
             <img src={filterButton} alt="just to filter" />
           </div>
           <p className="text-[20px] lg:text-[21px]">
-            Showing 1 – 10 of 15 results
+            Showing {currentItems.length} of {totalItems}
           </p>
         </div>
         <div className="flex gap-2 items-center">
@@ -37,7 +49,7 @@ const AvailableProperties = () => {
       </div>
 
       <div className="flex flex-wrap justify-center lg:justify-between  ">
-        {allProperties.map((properties, index) => {
+        {currentItems.map((properties, index) => {
           return (
             <div key={index} className="w-[396px] font-[outfit] my-4">
               <div className="relative">
@@ -160,6 +172,12 @@ const AvailableProperties = () => {
           );
         })}
       </div>
+      <Pagination
+        totalItems={allProperties.length}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 };

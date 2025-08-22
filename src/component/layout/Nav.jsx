@@ -2,6 +2,7 @@ import React from "react";
 import navIcon from "../../../src/assets/navIcon.png";
 import { links } from "../../../data";
 import { IoCloseSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -26,13 +27,17 @@ const Nav = () => {
           </div>
 
           <div className="hidden lg:flex items-center justify-between gap-[10px] text-white">
-            <button className="p-[10px] border border-[#F5F5F5] border-2px rounded-[8px] w-[104px] h-[61px] text-[20px]">
-              Sign in
-            </button>
+            <Link to={"/register"}>
+              <button className="p-[10px] border border-[#F5F5F5] border-2px rounded-[8px] w-[104px] h-[61px] text-[20px] cursor-pointer">
+                Sign up
+              </button>
+            </Link>
 
-            <button className="p-[10px] border border-2px rounded-[8px] w-[104px] h-[61px] bg-[#3D9970] text-[20px]">
-              Login
-            </button>
+            <Link to={"/login"}>
+              <button className="p-[10px] border border-2px rounded-[8px] w-[104px] h-[61px] bg-[#3D9970] text-[20px] cursor-pointer">
+                Login
+              </button>
+            </Link>
           </div>
           <div className="dropdown dropdown-end lg:hidden">
             <div tabIndex={0} role="button" className="btn m-1">
@@ -55,13 +60,17 @@ const Nav = () => {
               </li>
               <li>
                 <div className="flex  flex-col items-center justify-between gap-[10px] text-white">
-                  <button className="p-[10px] border border-[#F5F5F5] border-2px rounded-[8px] w-[104px] h-[61px] text-[20px]">
-                    Sign in
-                  </button>
+                  <Link to={"/register"}>
+                    <button className="p-[10px] border border-[#F5F5F5] border-2px rounded-[8px] w-[104px] h-[61px] text-[20px]">
+                      Sign up
+                    </button>
+                  </Link>
 
-                  <button className="p-[10px] border border-2px rounded-[8px] w-[104px] h-[61px] bg-[#3D9970] text-[20px]">
-                    Login
-                  </button>
+                  <Link to={"/login"}>
+                    <button className="p-[10px] border border-2px rounded-[8px] w-[104px] h-[61px] bg-[#3D9970] text-[20px]">
+                      Login
+                    </button>
+                  </Link>
                 </div>
               </li>
             </ul>
