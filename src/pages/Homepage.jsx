@@ -1,8 +1,8 @@
 import React from "react";
-import Hero from "../component/Hero.jsx";
 import Footer from "../component/layout/footer";
 import AvailableProperties from "../component/AvailableProperties";
 import DiscoverProperties from "../component/DiscoverProperties";
+import Hero from "../component/Hero";
 
 const Homepage = () => {
   return (
