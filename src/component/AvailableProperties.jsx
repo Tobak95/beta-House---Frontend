@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import filterButton from "../../src/assets/filterButton.png";
 import dropDownArrow from "../../src/assets/dropDownArrow.png";
-import { allProperties } from "../../data";
+// import { allProperties } from "../../data";
 import ArrowLink from "../../src/assets/ArrowLink.png";
 import BathTub from "../../src/assets/BathTub.png";
 import Bed from "../../src/assets/Bed.png";
@@ -14,18 +14,35 @@ import Share from "../../src/assets/Share.png";
 import VideoImage from "../../src/assets/VideoImage.png";
 import { useState } from "react";
 import Pagination from "./Pagination";
+import { axiosInstance } from "../../utils/axiosInstance";
 
 const AvailableProperties = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [allProperties, setAllProperties] = useState([]);
   // const [loading, setIsloading] = useState(false);
   // const [properties, setProperties] = useState([]);
   const itemsPerPage = 9;
+  const getAllProperties = async () => {
+    try {
+      const response = await axiosInstance.get("/property/allproperty");
+      const { data } = response;
+      const property = data.properties || data || [];
+      console.log(data);
+      setAllProperties(property);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getAllProperties();
+  }, []);
 
   // calculate what to show
   const totalItems = allProperties.length;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = allProperties.slice(indexOfFirstItem, indexOfLastItem);
+
   return (
     <div className="layout">
       <div className="flex flex-col justify-center items-center  gap-2 p-3 lg:flex-row lg:justify-between  lg:mt-5 font-[outfit]">
