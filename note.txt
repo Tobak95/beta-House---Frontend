@@ -124,3 +124,23 @@ export const allProperties = [
 ];
 
 
+
+
+<Link to={"/register"}>
+              <button className="p-[10px] border border-[#F5F5F5] border-2px rounded-[8px] w-[104px] h-[61px] text-[20px] cursor-pointer">
+                Sign up
+              </button>
+            </Link>
+
+            <Link to={"/login"}>
+              <button className="p-[10px] border border-2px rounded-[8px] w-[104px] h-[61px] bg-[#3D9970] text-[20px] cursor-pointer">
+                Login
+              </button>
+            </Link>
+
+
+
+
+
+    toast.error(mydata.token || "Login Failed");
+        setErrorMessage(mydata.message || "Login Failed");

@@ -1,16 +1,15 @@
 import React from "react";
-import Nav from "./layout/Nav";
 import { useState } from "react";
 import countPlus from "../../src/assets/countPlus.png";
 import countMinus from "../../src/assets/countMinus.png";
-
+import NavHomeLoggedIn from "../component/layout/NavHomeLoggedIn";
 
 const Hero = () => {
   const [location, setLocation] = useState("");
   const [count, setCount] = useState(0);
   return (
     <div className="hero w-full lg:max-h-[680px] bg-[#666666]  ">
-      <Nav />
+      <NavHomeLoggedIn />
       <div className="layout mt-[70px] ">
         <div className="w-full flex lg:h-[217px] ">
           <div className="mx-auto w-[320px] md:w-[560px]  text-center lg:w-[784px] lg:text-center text-[#ffffff]">

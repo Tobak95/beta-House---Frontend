@@ -3,8 +3,16 @@ import navIcon from "../../../src/assets/navIcon.png";
 import { links } from "../../../data";
 import { IoCloseSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useAppContext } from "../../hooks/useAppContext";
 
 const Nav = () => {
+
+ const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const {user } = useAppContext();
+  console.log(user);
+
   return (
     <nav
       className=" bg-[#1D293F1F] -mt-160 md:-mt-130 lg:-mt-105 w-full px-3
@@ -61,13 +69,19 @@ const Nav = () => {
               <li>
                 <div className="flex  flex-col items-center justify-between gap-[10px] text-white">
                   <Link to={"/register"}>
-                    <button className="p-[10px] border border-[#F5F5F5] border-2px rounded-[8px] w-[104px] h-[61px] text-[20px]">
+                    <button
+                      disabled={isLoggedIn}
+                      className="p-[10px] border border-[#F5F5F5] border-2px rounded-[8px] w-[104px] h-[61px] text-[20px]"
+                    >
                       Sign up
                     </button>
                   </Link>
 
                   <Link to={"/login"}>
-                    <button className="p-[10px] border border-2px rounded-[8px] w-[104px] h-[61px] bg-[#3D9970] text-[20px]">
+                    <button
+                      disabled={isLoggedIn}
+                      className="p-[10px] border border-2px rounded-[8px] w-[104px] h-[61px] bg-[#3D9970] text-[20px]"
+                    >
                       Login
                     </button>
                   </Link>

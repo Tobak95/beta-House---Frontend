@@ -14,6 +14,7 @@ const Login = () => {
   const { login, user } = useAppContext();
   const [errorMessage, setErrorMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const redirect = useNavigate();
 
@@ -27,27 +28,50 @@ const Login = () => {
 
   const handleLogin = async (data) => {
     setSubmitting(true);
-
     try {
-      const response = await axiosInstance.post("/auth/login", data);
-      const mydata = response.data;
-      if (mydata.success) {
-        login(mydata.token, mydata.user);
-        toast.success("Login Successful");
-        redirect("/");
-      } else {
-        toast.error(mydata.token || "Login Failed");
-        setErrorMessage(mydata.message || "Login Failed");
+      const response = await axiosInstance.post("/auth/login", {...data});
+      const { data: mydata } = response;
+      if (mydata === 200) {
+        console.log(mydata);
       }
-      console.log("Backend response", mydata);
-      toast.error(error?.response?.data?.message || "Login Failed");
-      setErrorMessage(error?.response?.data?.message || "Login Failed");
+      toast.success("Login Successful");
+      redirect("/home");
+      login(mydata.token, mydata.user);
     } catch (error) {
       console.log(error);
+      setErrorMessage(error?.response?.data.message);
+      toast.error("Login Failed");
     } finally {
       setSubmitting(false);
     }
   };
+
+  // const handleLogin = async (data) => {
+  //   setSubmitting(true);
+
+  //   try {
+  //     const response = await axiosInstance.post("/auth/login", data);
+  //     const mydata = response.data;
+  //     if (mydata.success) {
+  //       setIsLoggedIn(true);
+  //       const result = {data: mydata.user, isLoggedIn}
+  //       console.log(result);
+
+  //       login(mydata.token, result);
+  //       toast.success("Login Successful");
+  //       setTimeout(() => {
+  //         redirect("/home");
+  //       }, 6000);
+  //     }
+  //     console.log("Backend response", mydata);
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error(errors?.response?.data?.message || "Login Failed");
+  //     setErrorMessage(errors?.response?.data?.message || "Login Failed");
+  //   } finally {
+  //     setSubmitting(false);
+  //   }
+  // };
 
   return (
     <div className="layout flex gap-10">

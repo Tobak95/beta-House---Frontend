@@ -1,20 +1,19 @@
 import React from "react";
-import Footer from "../component/layout/Footer";
+import Hero from "../component/HeroLoggedIn";
 import AvailableProperties from "../component/AvailableProperties";
 import DiscoverProperties from "../component/DiscoverProperties";
-import Hero from "../component/Hero";
+import Footer from "../component/layout/Footer";
+import NavHome from "../component/layout/NavHomeLoggedIn";
 
-const Homepage = () => {
+const HomeLoggedInPage = () => {
   return (
     <div>
       <Hero />
       <AvailableProperties />
       <DiscoverProperties />
-      <div className="mt-60">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
 
-export default Homepage;
+export default HomeLoggedInPage;

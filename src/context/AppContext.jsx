@@ -11,6 +11,7 @@ const AppContext = ({ children }) => {
     // Get from localStorage
     const storedToken = localStorage.getItem("accessToken");
     const storedUser = localStorage.getItem("user");
+    console.log(storedUser);
 
     if (storedToken) {
       setToken(storedToken);
