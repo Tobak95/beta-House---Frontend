@@ -9,6 +9,7 @@ import { useAppContext } from "../hooks/useAppContext";
 import { useNavigate, Link } from "react-router-dom";
 import { axiosInstance } from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
+import { ClipLoader } from "react-spinners";
 
 const Login = () => {
   const { login, user } = useAppContext();
@@ -29,7 +30,7 @@ const Login = () => {
   const handleLogin = async (data) => {
     setSubmitting(true);
     try {
-      const response = await axiosInstance.post("/auth/login", {...data});
+      const response = await axiosInstance.post("/auth/login", { ...data });
       const { data: mydata } = response;
       if (mydata === 200) {
         console.log(mydata);
@@ -46,37 +47,20 @@ const Login = () => {
     }
   };
 
-  // const handleLogin = async (data) => {
-  //   setSubmitting(true);
-
-  //   try {
-  //     const response = await axiosInstance.post("/auth/login", data);
-  //     const mydata = response.data;
-  //     if (mydata.success) {
-  //       setIsLoggedIn(true);
-  //       const result = {data: mydata.user, isLoggedIn}
-  //       console.log(result);
-
-  //       login(mydata.token, result);
-  //       toast.success("Login Successful");
-  //       setTimeout(() => {
-  //         redirect("/home");
-  //       }, 6000);
-  //     }
-  //     console.log("Backend response", mydata);
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error(errors?.response?.data?.message || "Login Failed");
-  //     setErrorMessage(errors?.response?.data?.message || "Login Failed");
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  // };
-
   return (
     <div className="layout flex gap-10">
       <div className="mx-auto w-[482px] p-7">
-        <div className=" lg:w-[455px] mt-25">
+        <Link to={"/"}>
+          <div className="flex gap-3 items-center mb-10">
+            <div className="bg-[#3D9970] rounded-full w-[55px] h-[55px] text-white flex items-center justify-center">
+              <h1 className="text-[22px] font-bold flex text-center">BH</h1>
+            </div>
+            <div>
+              <h1 className="text-black text-[22px] font-bold">Beta House</h1>
+            </div>
+          </div>
+        </Link>
+        <div className=" lg:w-[455px] lg:mt-25">
           <h1 className="font-semibold text-[30px] lg:text-[28px]">
             Welcome Back to BetaHouse!
           </h1>
@@ -143,7 +127,11 @@ const Login = () => {
               disabled={submitting}
               className="py-5 bg-[#3D9970] w-full rounded-[15px]"
             >
-              {submitting ? "Loggin......." : "Login"}
+              {submitting ? (
+                <ClipLoader size={20} color="#ffffff" />
+              ) : (
+                "Register"
+              )}
             </button>
           </div>
 

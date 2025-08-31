@@ -8,6 +8,7 @@ import { signUpSchema } from "../../utils/formValidator";
 import { useNavigate, Link } from "react-router-dom";
 import { axiosInstance } from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
+import { ClipLoader } from "react-spinners";
 
 const Register = () => {
   const redirect = useNavigate();
@@ -49,7 +50,18 @@ const Register = () => {
     <div>
       <div className="layout flex">
         <div className="mx-auto w-[482px]  lg:p-7">
-          <div className="mt-5 p-4 lg:p-0 lg:w-[455px]">
+          <Link to={"/"}>
+            <div className="flex gap-3 items-center mb-10 ml-4 lg:ml-0">
+              <div className="bg-[#3D9970] rounded-full w-[55px] h-[55px] text-white flex items-center justify-center">
+                <h1 className="text-[22px] font-bold flex text-center">BH</h1>
+              </div>
+              <div>
+                <h1 className="text-black text-[22px] font-bold">Beta House</h1>
+              </div>
+            </div>
+          </Link>
+
+          <div className="lg:mt-5 p-4 lg:p-0 lg:w-[455px]">
             <h1 className="w-full text-[19px] lg:text-[27px] font-semibold ">
               Join our community of home seekers and explore the possibilities
               that await.
@@ -100,7 +112,7 @@ const Register = () => {
               </div>
             </div>
 
-            <div className=" flex flex-col  my-3 mt-25 lg:mt-0">
+            <div className=" flex flex-col  my-3 mt-32 lg:mt-0">
               <label htmlFor="email" className="font-[500] mt-4">
                 Email
               </label>
@@ -167,7 +179,11 @@ const Register = () => {
 
             <div className="flex justify-center mt-10 lg:mt-4">
               <button className="py-5 bg-[#3D9970] w-full rounded-[15px] cursor-pointer">
-                Register
+                {Submitting ? (
+                  <ClipLoader size={20} color="#ffffff" />
+                ) : (
+                  "Register"
+                )}
               </button>
             </div>
           </form>

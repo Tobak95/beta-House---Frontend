@@ -15,33 +15,39 @@ import VideoImage from "../../src/assets/VideoImage.png";
 import { useState } from "react";
 import Pagination from "./Pagination";
 import { axiosInstance } from "../../utils/axiosInstance";
+import PropertyLoader from "./PropertyLoader";
+import {usePropertyContext} from "../hooks/UsePropertyContext"
+
+
 
 const AvailableProperties = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [allProperties, setAllProperties] = useState([]);
-  // const [loading, setIsloading] = useState(false);
-  // const [properties, setProperties] = useState([]);
-  const itemsPerPage = 9;
-  const getAllProperties = async () => {
-    try {
-      const response = await axiosInstance.get("/property/allproperty");
-      const { data } = response;
-      const property = data.properties || data || [];
-      console.log(data);
-      setAllProperties(property);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getAllProperties();
-  }, []);
+  //destructuring loading and filtered properties from usePropertyContext
+  const {loading, filteredProperties} = usePropertyContext()
+ 
 
-  // calculate what to show
-  const totalItems = allProperties.length;
+  const itemsPerPage = 9;
+  // const getAllProperties = async () => {
+  //   try {
+  //     const response = await axiosInstance.get("/property/allproperty");
+  //     const { data } = response;
+  //     const property = data.properties || data || [];
+  //     console.log(data);
+  //     setAllProperties(property);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getAllProperties();
+  // }, []);
+
+  // calculate what to show 1, total items
+  const totalItems = filteredProperties.length;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = allProperties.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredProperties.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <div className="layout">
@@ -190,7 +196,7 @@ const AvailableProperties = () => {
         })}
       </div>
       <Pagination
-        totalItems={allProperties.length}
+        totalItems={filteredProperties.length}
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
         onPageChange={setCurrentPage}

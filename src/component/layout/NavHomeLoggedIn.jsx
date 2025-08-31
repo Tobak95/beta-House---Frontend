@@ -6,8 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppContext } from "../../hooks/useAppContext";
 import micheal from "../../../src/assets/Micheal.png";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import UserAvatar from "../../component/UserAvatar";
 
 const Nav = () => {
+
   const { logout, user } = useAppContext();
   const redirect = useNavigate();
 
@@ -24,7 +26,7 @@ const Nav = () => {
       <div className="layout ">
         <div className="flex justify-between lg:flex items-center lg:justify-between h-[121px]">
           <div>
-            <img src={navIcon} alt="betaHouse" />
+            <img src={navIcon} alt="betaHouse" className="w-[150px]" />
           </div>
 
           <div className="hidden lg:flex items-center text-[20px] w-full lg:w-[600px] justify-between px-5 text-[#F5F5F5] font-medium ">
@@ -38,18 +40,16 @@ const Nav = () => {
           </div>
 
           <div className="hidden lg:flex items-center justify-between gap-[10px] text-white">
-            <div>
-              <img
-                src={micheal}
-                alt="profile"
-                className="w-[48px] rounded-full"
-              />
+            <div className="lg:text-white">
+              <UserAvatar firstName={user.firstName} lastName={user.lastName} />
             </div>
-            <div className="text-white">
-              <p>{user.firstName} {user.lastName}</p>
+            <div className=" lg:text-white">
+              <p className="">
+                {user.firstName} {user.lastName}
+              </p>
             </div>
 
-            <div className="dropdown dropdown-end">
+            <div className=" dropdown dropdown-end">
               <div tabIndex={0} role="button" className="cursor-pointer">
                 <div className="w-10 ">
                   {" "}
@@ -69,36 +69,45 @@ const Nav = () => {
             </div>
           </div>
           <div className="dropdown dropdown-end  lg:hidden">
-            <div tabIndex={0} role="button" className="btn m-1">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn m-1 bg-black text-white"
+            >
               <GiHamburgerMenu />
             </div>
             <ul
               tabIndex={0}
               className="dropdown-content menu bg-[#3d9970] rounded-box z-1 w-70 p-2 shadow-sm mr-9 mt-3"
             >
-              
-                <li className="flex flex-col items-center text-[20px] w-full justify-between px-5 text-[#F5F5F5] font-medium my-3 ">
-                  {links.map((link, index) => {
-                    return (
-                      <a key={index} href={link.to}>
-                        {link.title}
-                      </a>
-                    );
-                  })}
-                </li>
-                <div className="flex  flex-col items-center justify-between gap-[10px]">
-                  <div>
-                    <li className="text-black ">
-                      <button
-                        onClick={handleLogout}
-                        className="text-black bg-white font-bold p-4"
-                      >
-                        Logout
-                      </button>
-                    </li>
-                  </div>
+              <li className="flex flex-col items-center text-[20px] w-full justify-between px-5 text-[#F5F5F5] font-medium my-3 ">
+                {links.map((link, index) => {
+                  return (
+                    <a key={index} href={link.to}>
+                      {link.title}
+                    </a>
+                  );
+                })}
+              </li>
+              <div className="flex  flex-col items-center justify-between gap-[10px]">
+                <div className="lg:text-white">
+                  <UserAvatar
+                    firstName={user.firstName}
+                    lastName={user.lastName}
+                  />
                 </div>
-             
+
+                <div>
+                  <li className="text-black ">
+                    <button
+                      onClick={handleLogout}
+                      className="text-black bg-white font-bold p-4"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </div>
+              </div>
             </ul>
           </div>
         </div>

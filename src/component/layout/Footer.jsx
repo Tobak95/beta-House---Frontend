@@ -84,6 +84,8 @@ const Footer = () => {
             </div>
           </div>
 
+
+
           <div className="mt-10 lg:mt-28">
             <div className="text-center lg:text-start">
               <h1 className="text-[25px] lg:text-[23px] font-semibold">
@@ -98,15 +100,19 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <hr />
-        <div className="flex flex-col gap-3 text-center mb-10 lg:mb-0 lg:text-start lg:gap-0 lg:flex-row justify-between text-[18px] lg:text-[16px] mt-10 px-20">
+        
+
+        
+        <div className="flex flex-col gap-3 text-center mb-10 lg:mb-0 lg:text-start lg:gap-0 lg:flex-row justify-between text-[18px] lg:text-[16px] mt-20 px-20">
           <div>
+            
             <p>Copyright 2023 Betahouse  Designed by Michael.fig</p>
           </div>
           <div>
             <p>Privacy Policy</p>
           </div>
         </div>
+        
       </div>
     </footer>
   );
